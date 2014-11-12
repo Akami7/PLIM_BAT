@@ -22,6 +22,11 @@ namespace test
             //BuildLocalizedApplicationBar();
         }
 
+        private void lvl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

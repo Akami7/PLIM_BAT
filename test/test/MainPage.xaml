@@ -47,7 +47,23 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Button" HorizontalAlignment="Left" Margin="228,313,0,0" VerticalAlignment="Top"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="260,351,0,0" VerticalAlignment="Top"/>
+            <Slider x:Name="lvl" Margin="126.466,0,0,329.452" Height="253.768" RenderTransformOrigin="0.501,0.501" UseLayoutRounding="True" d:LayoutRounding="Auto" Maximum="100" SmallChange="1" LargeChange="5" Value="50" Orientation="Vertical" Background="#FF1F1F1F" HorizontalAlignment="Left" VerticalAlignment="Bottom" ValueChanged="lvl_ValueChanged">
+                <Slider.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                        <GradientStop Color="#FF0610EC"/>
+                        <GradientStop Color="#FF310D64" Offset="0.74"/>
+                    </LinearGradientBrush>
+                </Slider.Foreground>
+                <Slider.BorderBrush>
+                    <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                </Slider.BorderBrush>
+                <Slider.RenderTransform>
+                    <CompositeTransform Rotation="-90" ScaleX="10" TranslateX="0.212" TranslateY="-0.74"/>
+                </Slider.RenderTransform>
+            </Slider>
 
         </Grid>
 
