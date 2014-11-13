@@ -8,11 +8,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using test.Resources;
+using Microsoft.Phone.Scheduler;
 
 namespace test
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        // var
+        private const string TASK_NAME = "MyAgent";
+
         // Constructor
         public MainPage()
         {
@@ -22,10 +26,47 @@ namespace test
             //BuildLocalizedApplicationBar();
         }
 
+        
+
         private void lvl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            StartAgent();
+
+
+        }
+
+        private void StartAgent()
+        {
+            StopAgentIfStarted();
+
+            PeriodicTask task = new PeriodicTask(TASK_NAME);
+            task.Description = "Our agent for battery lvl";
+            ScheduledActionService.Add(task);
+            #if DEBUG
+            // If we’re debugging, attempt to start the task immediately 
+            ScheduledActionService.LaunchForTest(TASK_NAME, new TimeSpan(0, 0, 1));
+            #endif
+        }
+
+        private void StopAgentIfStarted()
+        {
+            if (ScheduledActionService.Find(TASK_NAME) != null)
+            {
+                ScheduledActionService.Remove(TASK_NAME);
+            }
+        } 
+        
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
