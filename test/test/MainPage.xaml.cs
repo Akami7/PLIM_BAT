@@ -8,23 +8,67 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using test.Resources;
+using System.IO.IsolatedStorage;
+using System.Diagnostics;
 
 namespace test
 {
     public partial class MainPage : PhoneApplicationPage
     {
+  
+        
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+            
+            //IsolatedStorageHelper.Clear();  // Uncomment this line if you want to clear the database
+
+            // The refCount is used to keep track of the last the database id when the app is closed.
+            int refCount = IsolatedStorageHelper.GetObject<int>("ref_count");
+            new BatteryState(refCount);
+
         }
 
         private void lvl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>("battery_states.db");
+
+            if (batteryStateDB == null)
+            {
+                Debug.WriteLine("No entries");
+                batteryStateDB = new List<BatteryState>();
+            }
+
+            batteryStateDB.Add(new BatteryState().updateState());
+            IsolatedStorageHelper.SaveObject("battery_states.db", batteryStateDB);
+            IsolatedStorageHelper.SaveObject("ref_count", batteryStateDB.Last().Id + 1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>("battery_states.db");
+            if (batteryStateDB == null)
+            {
+                //Nothing to do.
+                return;
+            }
+
+            foreach(BatteryState bs in batteryStateDB){
+                Debug.WriteLine("Id : " + bs.Id
+                    + ", Level : " + bs.level
+                    + ", Time : " + bs.time);
+            }
         }
 
         // Sample code for building a localized ApplicationBar
