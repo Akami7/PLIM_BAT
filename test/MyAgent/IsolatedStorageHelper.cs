@@ -1,34 +1,45 @@
 ﻿using System.IO;
 using System.IO.IsolatedStorage;
-//using System.IO.IsolatedStorage;
 using System.Runtime.Serialization.Json;
 using System.Text;
 public static class IsolatedStorageHelper
 {
-    public static T GetObject<T>(string key)
+    public static T GetObject<T>(string fileName)
     {
-        var localSettings = IsolatedStorageSettings.ApplicationSettings;
-        
-        if (localSettings.Contains(key))
+        var localFileStorage = IsolatedStorageFile.GetUserStoreForApplication();
+        StreamReader reader = null;
+
+        try
         {
-            string serializedObject = localSettings[key].ToString();
+            reader = new StreamReader(new IsolatedStorageFileStream(fileName, FileMode.Open, localFileStorage));
+            string serializedObject = reader.ReadToEnd();
+            reader.Close();
             return Deserialize<T>(serializedObject);
+
+        }
+        catch
+        {
+            return default(T);
         }
 
-        return default(T);
+        
     }
 
-    public static void SaveObject<T>(string key, T objectToSave)
+    public static void SaveObject<T>(string fileName, T objectToSave)
     {
-        var localSettings = IsolatedStorageSettings.ApplicationSettings;
+        var localFileStorage = IsolatedStorageFile.GetUserStoreForApplication();
+        StreamWriter writer = new StreamWriter(new IsolatedStorageFileStream(fileName, FileMode.OpenOrCreate, localFileStorage));
+
         string serializedObject = Serialize(objectToSave);
-        localSettings[key] = serializedObject;
+
+        writer.Write(serializedObject);
+        writer.Close();
     }
 
-    public static void DeleteObject(string key)
+    public static void DeleteObject(string fileName)
     {
-        var localSettings = IsolatedStorageSettings.ApplicationSettings;
-        localSettings.Remove(key);
+        var localFileStorage = IsolatedStorageFile.GetUserStoreForApplication();
+        localFileStorage.DeleteFile(fileName);
     }
 
     private static string Serialize(object objectToSerialize)
@@ -57,8 +68,8 @@ public static class IsolatedStorageHelper
 
     internal static void Clear()
     {
-        var localSettings = IsolatedStorageSettings.ApplicationSettings;
-        localSettings.Clear();
+        var localFileStorage = IsolatedStorageFile.GetUserStoreForApplication();
+        localFileStorage.Remove();
         
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Phone.Devices.Power;
 
-namespace test
+namespace MyAgent
 {
     [DataContract]
     public class BatteryState

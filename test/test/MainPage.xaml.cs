@@ -11,6 +11,7 @@ using test.Resources;
 using System.IO.IsolatedStorage;
 using System.Diagnostics;
 using Microsoft.Phone.Scheduler;
+using MyAgent;
 
 namespace test
 {
@@ -30,10 +31,7 @@ namespace test
             
             //IsolatedStorageHelper.Clear();  // Uncomment this line if you want to clear the database
 
-            // The refCount is used to keep track of the last the database id when the app is closed.
-            int refCount = IsolatedStorageHelper.GetObject<int>("ref_count");
-            new BatteryState(refCount);
-
+            
         }
 
         
@@ -45,17 +43,7 @@ namespace test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>("battery_states.db");
-
-            if (batteryStateDB == null)
-            {
-                Debug.WriteLine("No entries");
-                batteryStateDB = new List<BatteryState>();
-            }
-
-            batteryStateDB.Add(new BatteryState().updateState());
-            IsolatedStorageHelper.SaveObject("battery_states.db", batteryStateDB);
-            IsolatedStorageHelper.SaveObject("ref_count", batteryStateDB.Last().Id + 1);
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
