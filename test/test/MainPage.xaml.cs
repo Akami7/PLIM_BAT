@@ -74,10 +74,7 @@ namespace test
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
