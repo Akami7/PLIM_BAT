@@ -19,17 +19,20 @@ namespace test
     {
         // var
         private const string TASK_NAME = "MyAgent";
-
+        public static int EasterEgg { get; set; }
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
+            EasterEgg = 0;
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
             
             //IsolatedStorageHelper.Clear();  // Uncomment this line if you want to clear the database
+
+            lvl.IsEnabled = false;
 
             
         }
@@ -91,7 +94,8 @@ namespace test
             {
                 ScheduledActionService.Remove(TASK_NAME);
             }
-        } 
+        }
+
         
 
         // Sample code for building a localized ApplicationBar

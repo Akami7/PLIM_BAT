@@ -27,6 +27,9 @@ namespace MyAgent
             });
         }
 
+        public static string BATTERY_STATES_DB = "battery_states.db";
+        public static string CLUSTERING_DATA_DB = "clustering_data.db";
+
         /// Code to execute on Unhandled Exceptions
         private static void UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
@@ -66,7 +69,7 @@ namespace MyAgent
         private void LogBatteryState()
         {
             // Storing the battery state.
-            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>("battery_states.db");
+            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>(BATTERY_STATES_DB);
 
             if (batteryStateDB == null)
             {
@@ -77,7 +80,7 @@ namespace MyAgent
             BatteryState lastBatteryState = new BatteryState().updateState();
 
             batteryStateDB.Add(lastBatteryState);
-            IsolatedStorageHelper.SaveObject("battery_states.db", batteryStateDB);
+            IsolatedStorageHelper.SaveObject(BATTERY_STATES_DB, batteryStateDB);
             IsolatedStorageHelper.SaveObject("ref_count", batteryStateDB.Count);
 
 
@@ -101,7 +104,7 @@ namespace MyAgent
 
         private void UpdateClusteringData()
         {
-            ClusteringData cd = IsolatedStorageHelper.GetObject<ClusteringData>("classification_data.db");
+            ClusteringData cd = IsolatedStorageHelper.GetObject<ClusteringData>(CLUSTERING_DATA_DB);
 
             if (cd == null)
             {
