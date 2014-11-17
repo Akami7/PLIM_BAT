@@ -139,6 +139,11 @@ namespace test
             Debug.WriteLine("Sunday : " + cd.getSunday());
 
 
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/BatteryUsagePage.xaml", UriKind.Relative));
         } 
         
 
