@@ -71,7 +71,7 @@
                             </Grid>
                             <Rectangle HorizontalAlignment="Left" Height="16" Margin="15,46,0,0" VerticalAlignment="Top" Width="4" RenderTransformOrigin="0.5,0.5">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="{StaticResource PhoneChromeColor}"/>
+                                    <SolidColorBrush Color="{StaticResource PhoneBorderColor}"/>
                                 </Rectangle.Fill>
                                 <Rectangle.RenderTransform>
                                     <CompositeTransform ScaleX="-1"/>
@@ -123,7 +123,10 @@
                 <ColumnDefinition Width="97*"/>
             </Grid.ColumnDefinitions>
             <Button Content="&gt;" HorizontalAlignment="Left" Margin="215,525,0,0" VerticalAlignment="Top" Grid.Column="1" Click="Button_Click"/>
-            <Slider x:Name="lvl" Margin="0,-4.76,243.199,299.491" Height="312.269" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Maximum="100" SmallChange="1" LargeChange="5" Value="50" Orientation="Vertical" Background="#FF1F1F1F" HorizontalAlignment="Right" VerticalAlignment="Bottom" ValueChanged="lvl_ValueChanged" BorderThickness="2" Width="46.05" Grid.Column="1" Style="{StaticResource SliderStyle1}" Tap="lvl_Tap" >
+            <Slider x:Name="lvl" Margin="0,-4.76,243.199,299.491" Height="312.269" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Maximum="100" SmallChange="1" LargeChange="5" Value="50" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" ValueChanged="lvl_ValueChanged" BorderThickness="2" Width="46.05" Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False" IsTabStop="False" Tap="lvl_Tap" >
+                <Slider.Background>
+                    <SolidColorBrush Color="{StaticResource PhoneChromeColor}"/>
+                </Slider.Background>
                 <Slider.OpacityMask>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -139,7 +142,7 @@
                     </LinearGradientBrush>
                 </Slider.Foreground>
                 <Slider.BorderBrush>
-                    <SolidColorBrush Color="White"/>
+                    <SolidColorBrush Color="{StaticResource PhoneBorderColor}"/>
                 </Slider.BorderBrush>
                 <Slider.RenderTransform>
                     <CompositeTransform Rotation="-90" TranslateX="-0.054" TranslateY="0.033" ScaleX="7"/>

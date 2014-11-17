@@ -12,6 +12,7 @@ using System.IO.IsolatedStorage;
 using System.Diagnostics;
 using Microsoft.Phone.Scheduler;
 using MyAgent;
+using System.Windows.Threading;
 
 namespace test
 {
@@ -21,10 +22,13 @@ namespace test
         private const string TASK_NAME = "MyAgent";
         public static int EasterEgg { get; set; }
         
+        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            this.timer.Tick += new EventHandler(timer_Tick);
+            this.Loaded += new RoutedEventHandler(timer_Tick);
             EasterEgg = 0;
 
             // Sample code to localize the ApplicationBar
@@ -37,7 +41,14 @@ namespace test
             
         }
 
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            BatteryState bs = new BatteryState();
+            bs.updateState();
+            lvl.Value = bs.level;
         
+        }
 
         private void lvl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -96,7 +107,12 @@ namespace test
             }
         }
 
+        private void lvl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Debug.WriteLine("easterEgg!!!");
+        } 
         
+
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
