@@ -12,6 +12,7 @@ using System.IO.IsolatedStorage;
 using System.Diagnostics;
 using Microsoft.Phone.Scheduler;
 using MyAgent;
+using System.Windows.Threading;
 
 namespace test
 {
@@ -19,12 +20,13 @@ namespace test
     {
         // var
         private const string TASK_NAME = "MyAgent";
-
+        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
+            this.timer.Tick += new EventHandler(timer_Tick);
+            this.Loaded += new RoutedEventHandler(timer_Tick);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -34,7 +36,14 @@ namespace test
             
         }
 
-        
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            BatteryState bs = new BatteryState();
+            bs.updateState();
+            lvl.Value = bs.level;
+
+        }
 
         private void lvl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -91,6 +100,11 @@ namespace test
             {
                 ScheduledActionService.Remove(TASK_NAME);
             }
+        }
+
+        private void lvl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Debug.WriteLine("easterEgg!!!");
         } 
         
 
