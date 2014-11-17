@@ -85,6 +85,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BatteryState.cs" />
+    <Compile Include="ClusteringData.cs" />
     <Compile Include="IsolatedStorageHelper.cs" />
     <Compile Include="ScheduledAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
