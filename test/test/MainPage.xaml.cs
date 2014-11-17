@@ -61,7 +61,7 @@ namespace test
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>("battery_states.db");
+            List<BatteryState> batteryStateDB = IsolatedStorageHelper.GetObject<List<BatteryState>>(ScheduledAgent.BATTERY_STATES_DB);
             if (batteryStateDB == null)
             {
                 //Nothing to do.
@@ -117,6 +117,28 @@ namespace test
             EasterEgg++;
             if(EasterEgg == 3)
             NavigationService.Navigate(new Uri("/DebugPage.xaml", UriKind.Relative));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            ClusteringData cd = IsolatedStorageHelper.GetObject<ClusteringData>(ScheduledAgent.CLUSTERING_DATA_DB);
+
+            if (cd == null)
+            {
+                // Nothing to do.
+                Debug.WriteLine("No Clustering Data");
+                return;
+            }
+
+            Debug.WriteLine("Monday : " + cd.getMonday());
+            Debug.WriteLine("Tuesday : " + cd.getTuesday());
+            Debug.WriteLine("Tursday : " + cd.getThursday());
+            Debug.WriteLine("Wednesday : " + cd.getWednesday());
+            Debug.WriteLine("Friday : " + cd.getFriday());
+            Debug.WriteLine("Saturday : " + cd.getSaturday());
+            Debug.WriteLine("Sunday : " + cd.getSunday());
+
+
         } 
         
 

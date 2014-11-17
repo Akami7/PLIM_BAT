@@ -114,25 +114,25 @@ namespace MyAgent
             switch (DateTime.Today.DayOfWeek)
             {
                 case DayOfWeek.Monday:
-                    cd.Monday = 0;
+                    cd.setMonday(0);
                     break;
                 case DayOfWeek.Tuesday:
-                    cd.Tuesday = 0;
+                    cd.setTuesday(0);
                     break;
                 case DayOfWeek.Thursday:
-                    cd.Thursday = 0;
+                    cd.setThursday(0);
                     break;
                 case DayOfWeek.Wednesday:
-                    cd.Wednesday = 0;
+                    cd.setWednesday(0);
                     break;
                 case DayOfWeek.Friday:
-                    cd.Friday = 0;
+                    cd.setFriday(0);
                     break;
                 case DayOfWeek.Saturday:
-                    cd.Saturday = 0;
+                    cd.setSaturday(0);
                     break;
                 case DayOfWeek.Sunday:
-                    cd.Sunday = 0;
+                    cd.setSunday(0);
                     break;
             }
 

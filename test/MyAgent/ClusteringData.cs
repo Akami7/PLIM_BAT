@@ -13,87 +13,106 @@ namespace MyAgent
 
         public ClusteringData()
         {
-            Monday =
-            Tuesday =
-            Thursday =
-            Wednesday =
-            Friday =
-            Saturday =
-            Sunday = 0.0;
 
-            refCount = new List<int>() { 0, 0, 0, 0, 0, 0, 0 };
+            refCount = new List<int>() { 0, 0, 0, 0, 0, 0, 0 };           
+            
         }
 
+        
         [DataMember]
-        public List<int> refCount; 
+        public List<int> refCount;
+        
         [DataMember]
-        public double Monday
-        {
-            get { return Monday; }
-            set { 
-                refCount[0]++;
-                Monday += value / refCount[0];
-            }
-        } 
-        [DataMember]
-        public double Tuesday
-        {
-            get { return Tuesday; }
-            set
-            {
-                refCount[1]++;
-                Tuesday += value / refCount[1];
-            }
+        private double monday = 0.0;
+        public double getMonday(){
+            return this.monday;
         }
-        [DataMember]
-        public double Thursday
+
+        public void setMonday(double value)
         {
-            get { return Thursday; }
-            set
-            {
-                refCount[2]++;
-                Thursday += value / refCount[2];
-            }
+             refCount[0]++;
+             this.monday += value / refCount[0];
         }
+
         [DataMember]
-        public double Wednesday
+        private double tuesday = 0.0;
+        public double getTuesday()
         {
-            get { return Wednesday; }
-            set
-            {
-                refCount[3]++;
-                Wednesday += value / refCount[3];
-            }
+            return this.tuesday;
         }
+
+        public void setTuesday(double value)
+        {
+            refCount[1]++;
+            this.tuesday += value / refCount[1];
+        }
+
         [DataMember]
-        public double Friday
+        private double thursday = 0.0;
+        public double getThursday()
         {
-            get { return Friday; }
-            set
-            {
-                refCount[4]++;
-                Friday += value / refCount[4];
-            }
+            return this.thursday;
         }
+
+        public void setThursday(double value)
+        {
+            refCount[2]++;
+            this.thursday += value / refCount[2];
+        }
+
         [DataMember]
-        public double Saturday
+        private double wednesday = 0.0;
+        public double getWednesday()
         {
-            get { return Saturday; }
-            set
-            {
-                refCount[5]++;
-                Saturday += value / refCount[5];
-            }
+            return this.wednesday;
         }
+
+        public void setWednesday(double value)
+        {
+            refCount[3]++;
+            this.wednesday += value / refCount[3];
+        }
+
         [DataMember]
-        public double Sunday
+        private double friday = 0.0;
+        public double getFriday()
         {
-            get { return Sunday; }
-            set
-            {
-                refCount[6]++;
-                Sunday += value / refCount[6];
-            }
+            return this.friday;
         }
+
+        public void setFriday(double value)
+        {
+            refCount[4]++;
+            this.friday += value / refCount[4];
+        }
+
+
+        [DataMember]
+        private double saturday;
+        public double getSaturday()
+        {
+            return this.saturday;
+        }
+
+        public void setSaturday(double value)
+        {
+            refCount[5]++;
+            this.saturday += value / refCount[5];
+        }
+
+        [DataMember]
+        private double sunday;
+        public double getSunday()
+        {
+            return this.sunday;
+        }
+
+        public void setSunday(double value)
+        {
+            refCount[6]++;
+            this.sunday += value / refCount[6];
+        }
+
+        
     }
 }

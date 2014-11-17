@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyAgent;
+using System.Diagnostics;
 
 namespace test
 {
@@ -42,12 +43,16 @@ namespace test
             for (int i = 0; i < 1200; i++)
             {
 
-                BatteryState bs_tmp = bs;
+                BatteryState bs_tmp = new BatteryState();
+                bs_tmp.level = bs.level;
+                bs_tmp.time = bs.time;
+
                 bs_db.Add(bs_tmp);
+                
+                bs.level -= new Random().Next(1, 3);  // pick a number between 1 and 3;
+                bs.time = bs.time.AddMinutes(30); // The scheduled task agent will run each 30 minutes.
 
-                bs.level -= new Random().Next(3);  // pick a number between 0 and 3;
-                bs.time.AddMinutes(30); // The scheduled task agent will run each 30 minutes.
-
+                Debug.WriteLine("lvl : " + bs.level + ", time : " + bs.time.ToString());
                 // The next day we reset the battery level.
                 if (bs.time.Hour == startingDay.Hour)
                 {
@@ -68,13 +73,13 @@ namespace test
 
             ClusteringData cd = new ClusteringData();
 
-            cd.Monday = 10;
-            cd.Tuesday = 35;
-            cd.Thursday = 30;
-            cd.Wednesday = 5;
-            cd.Friday = 15;
-            cd.Saturday = 80;
-            cd.Sunday = 99;
+            cd.setMonday(10);
+            cd.setTuesday(35);
+            cd.setThursday(30);
+            cd.setWednesday(5);
+            cd.setFriday(15);
+            cd.setSaturday(80);
+            cd.setSunday(99);
 
 
             IsolatedStorageHelper.SaveObject(ScheduledAgent.CLUSTERING_DATA_DB, cd);
@@ -82,7 +87,10 @@ namespace test
 
         private void Rectangle_Tap_2(object sender, System.Windows.Input.GestureEventArgs e)
         {
+            Debug.WriteLine("Deleteing Battery State DB");
             IsolatedStorageHelper.DeleteObject(ScheduledAgent.BATTERY_STATES_DB);
+            
+            Debug.WriteLine("Deleteing Clustering Database");
             IsolatedStorageHelper.DeleteObject(ScheduledAgent.CLUSTERING_DATA_DB);
         }
     }
