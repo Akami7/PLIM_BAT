@@ -36,7 +36,6 @@ namespace test
             
             //IsolatedStorageHelper.Clear();  // Uncomment this line if you want to clear the database
 
-            lvl.IsEnabled = false;
 
             
         }
@@ -110,6 +109,14 @@ namespace test
         private void lvl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Debug.WriteLine("easterEgg!!!");
+        }
+
+        private void deb_Click(object sender, RoutedEventArgs e)
+        {
+
+            EasterEgg++;
+            if(EasterEgg == 3)
+            NavigationService.Navigate(new Uri("/DebugPage.xaml", UriKind.Relative));
         } 
         
 
