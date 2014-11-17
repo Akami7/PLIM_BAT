@@ -136,8 +136,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="239,409,0,0" TextWrapping="Wrap" Text="Vend" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="292,408,0,0" TextWrapping="Wrap" Text="Sam" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="342,408,0,0" TextWrapping="Wrap" Text="Dim" VerticalAlignment="Top"/>
-            <Button Content="Up" HorizontalAlignment="Left" Margin="10,450,0,0" VerticalAlignment="Top"/>
-            <Button Content="Down" HorizontalAlignment="Left" Margin="78,450,0,0" VerticalAlignment="Top"/>
+            <Button Content="Refresh" HorizontalAlignment="Left" Margin="157,461,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
             <Slider x:Name="lundiSlide" HorizontalAlignment="Left" Margin="-36.499,177.651,0,0" VerticalAlignment="Top" Width="217.686" Height="206" Style="{StaticResource SliderStyle1}" Background="Transparent" Foreground="White" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Value="30" Maximum="100" IsHitTestVisible="False" IsTabStop="False">
                 <Slider.RenderTransform>
                     <CompositeTransform Rotation="-90"/>
@@ -148,7 +147,7 @@
                     <CompositeTransform Rotation="-90"/>
                 </Slider.RenderTransform>
             </Slider>
-            <Slider x:Name="mardiSlide" HorizontalAlignment="Left" Margin="12.247,178.657,0,0" VerticalAlignment="Top" Width="217.686" Height="206" Style="{StaticResource SliderStyle1}" Background="Transparent" Foreground="White" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Value="30" Maximum="100" IsHitTestVisible="False" IsTabStop="False" ValueChanged="lundiSlide_Copy1_ValueChanged">
+            <Slider x:Name="mardiSlide" HorizontalAlignment="Left" Margin="12.247,178.657,0,0" VerticalAlignment="Top" Width="217.686" Height="206" Style="{StaticResource SliderStyle1}" Background="Transparent" Foreground="White" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Value="30" Maximum="100" IsHitTestVisible="False" IsTabStop="False">
                 <Slider.RenderTransform>
                     <CompositeTransform Rotation="-90"/>
                 </Slider.RenderTransform>
