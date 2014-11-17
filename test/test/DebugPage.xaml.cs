@@ -71,6 +71,8 @@ namespace test
 
             // Generate the cluster database.
 
+            Debug.WriteLine("Generating Clustering Database");
+
             ClusteringData cd = new ClusteringData();
 
             cd.setMonday(10);

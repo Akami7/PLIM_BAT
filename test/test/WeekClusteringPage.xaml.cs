@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MyAgent;
+using System.Diagnostics;
 
 namespace test
 {
@@ -35,6 +36,12 @@ namespace test
         private void updateCharts()
         {
             ClusteringData cd = IsolatedStorageHelper.GetObject<ClusteringData>(ScheduledAgent.CLUSTERING_DATA_DB);
+
+            if (cd == null)
+            {
+                Debug.WriteLine("Empty Cluster Data");
+                return;
+            }
 
             lundiSlide.Value = cd.getMonday();
             mardiSlide.Value = cd.getTuesday();
