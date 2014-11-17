@@ -122,7 +122,7 @@
                 <ColumnDefinition Width="55*"/>
                 <ColumnDefinition Width="97*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="&gt;" HorizontalAlignment="Left" Margin="215,525,0,0" VerticalAlignment="Top" Grid.Column="1" Click="Button_Click"/>
+            <Button Content="My Habits" HorizontalAlignment="Left" Margin="149,385,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.ColumnSpan="2"/>
             <Slider x:Name="lvl" Margin="0,-4.76,243.199,299.491" Height="312.269" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Maximum="100" SmallChange="1" LargeChange="5" Value="50" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" ValueChanged="lvl_ValueChanged" BorderThickness="2" Width="46.05" Grid.Column="1" Style="{StaticResource SliderStyle1}" IsHitTestVisible="False" IsTabStop="False" Tap="lvl_Tap" >
                 <Slider.Background>
                     <SolidColorBrush Color="{StaticResource PhoneChromeColor}"/>
@@ -148,10 +148,8 @@
                     <CompositeTransform Rotation="-90" TranslateX="-0.054" TranslateY="0.033" ScaleX="7"/>
                 </Slider.RenderTransform>
             </Slider>
-            <Button Content="GetLog" HorizontalAlignment="Left" Margin="36,351,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
             <Button x:Name="deb" Content="" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" Height="100" Width="316" Click="deb_Click" Grid.ColumnSpan="2"/>
-            <Button Content="GetCluster" Grid.Column="1" HorizontalAlignment="Left" Margin="10,351,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
-            <Button Content="Today's Usage" HorizontalAlignment="Left" Margin="151,428,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="Button_Click_3"/>
+            <Button Content="Today's Usage" HorizontalAlignment="Left" Margin="132,313,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="Button_Click_3"/>
 
         </Grid>
 

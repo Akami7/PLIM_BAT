@@ -28,17 +28,13 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="14,10,10,-10">
-            <Rectangle Fill="#FF6262D6" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="436" Tap="Rectangle_Tap"/>
-            <Rectangle Fill="#FFF3740A" HorizontalAlignment="Left" Height="191" Margin="10,259,0,0" Stroke="Black" VerticalAlignment="Top" Width="197" Tap="Rectangle_Tap_1"/>
-            <Rectangle Fill="Red" HorizontalAlignment="Left" Height="191" Margin="249,259,0,0" Stroke="Black" VerticalAlignment="Top" Width="197" Tap="Rectangle_Tap_2"/>
-            <TextBlock HorizontalAlignment="Left" Margin="38,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Width="384">
-            	<Run Text="Generate Log Database"/>
-            	<LineBreak/>
-            	<Run/>
-            </TextBlock>
-            <TextBlock HorizontalAlignment="Left" Margin="20,282,0,0" TextWrapping="Wrap" Text="Generate Cluster Database" VerticalAlignment="Top" FontSize="36" Width="229"/>
-            <TextBlock HorizontalAlignment="Left" Margin="260,308,0,0" TextWrapping="Wrap" Text="Clear Databases" VerticalAlignment="Top" FontSize="36"/>
-            <Button Content="&lt;" HorizontalAlignment="Left" Margin="10,541,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button x:Name="BackMainPageButton" Content="&lt;" HorizontalAlignment="Left" Margin="10,541,0,0" VerticalAlignment="Top" Click="BackMainPageButton_Click"/>
+            <Button x:Name="GenAllButton" Content="Generate All DBs" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="125" Width="446" Background="#FF1FC527" Click="GenAllButton_Click"/>
+            <Button x:Name="GenLogButton" Content="Generate Log DB" HorizontalAlignment="Left" Margin="0,135,0,0" VerticalAlignment="Top" Height="119" Width="222" Background="#FFD49019" Click="GenLogButton_Click"/>
+            <Button x:Name="GenClusterButton" Content="Gen. Cluster DB" HorizontalAlignment="Left" Margin="224,135,0,0" VerticalAlignment="Top" Height="119" Width="222" Background="#FF2D548B" Click="GenClusterButton_Click"/>
+            <Button x:Name="PrintLogButton" Content="Print Log DB" HorizontalAlignment="Left" Margin="0,259,0,0" VerticalAlignment="Top" Height="119" Width="222" Background="#FF2A8321" Click="PrintLogButton_Click"/>
+            <Button x:Name="PrintClusterButton" Content="Print Cluster DB" HorizontalAlignment="Left" Margin="224,259,0,0" VerticalAlignment="Top" Height="119" Width="222" Background="#FF621895" Click="PrintClusterButton_Click"/>
+            <Button x:Name="ClearAllButton" Content="Clear All DBs" HorizontalAlignment="Left" Margin="0,378,0,0" VerticalAlignment="Top" Height="125" Width="446" Background="#FFD61212" Click="ClearAllButton_Click"/>
         </Grid>
     </Grid>
 
