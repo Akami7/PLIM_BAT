@@ -51,5 +51,9 @@ namespace test
             samediSlide.Value = cd.getSaturday();
             dimancheSlide.Value = cd.getSunday();
         }
+
+        
+
+            
     }
 }
