@@ -111,28 +111,42 @@ namespace MyAgent
                 cd = new ClusteringData();
             }
 
+            List<BatteryState> bs_db =  IsolatedStorageHelper.GetObject<List<BatteryState>>(BATTERY_STATES_DB);
+
+
+            BatteryState last;
+
+            if (bs_db == null)
+            {
+                Thread.Sleep(120000);
+                SetUpTimer(new TimeSpan(23, 50, 00));
+                return;
+            }
+
+            last = bs_db[bs_db.Count];
+
             switch (DateTime.Today.DayOfWeek)
             {
                 case DayOfWeek.Monday:
-                    cd.setMonday(0);
+                    cd.setMonday(last.level);
                     break;
                 case DayOfWeek.Tuesday:
-                    cd.setTuesday(0);
+                    cd.setTuesday(last.level);
                     break;
                 case DayOfWeek.Thursday:
-                    cd.setThursday(0);
+                    cd.setThursday(last.level);
                     break;
                 case DayOfWeek.Wednesday:
-                    cd.setWednesday(0);
+                    cd.setWednesday(last.level);
                     break;
                 case DayOfWeek.Friday:
-                    cd.setFriday(0);
+                    cd.setFriday(last.level);
                     break;
                 case DayOfWeek.Saturday:
-                    cd.setSaturday(0);
+                    cd.setSaturday(last.level);
                     break;
                 case DayOfWeek.Sunday:
-                    cd.setSunday(0);
+                    cd.setSunday(last.level);
                     break;
             }
 
