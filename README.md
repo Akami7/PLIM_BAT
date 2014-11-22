@@ -28,7 +28,7 @@ PLIM_BAT
 How to get started
 ========	
 
-1. Download the [zip file](https://drive.google.com/a/esprit.tn/file/d/0B3QawzzztnydMkt4VXdhaWlfYlE/view?usp=sharing) project
+1. Download the latest [release](https://github.com/Akami7/PLIM_BAT/releases)
 2. Unzip the file
 3. Open the test.sln file in /PLIM_BAT/test
 4. Connect the device(phone) with the USB cable
