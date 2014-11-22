@@ -33,8 +33,8 @@ How to get started
 3. Open the test.sln file in /PLIM_BAT/test
 4. Install the packages: in the menu go to TOOLS > NuGet Package Manager > NuGet Manager Console, and enter these command:
 ```
-  **PM>Install-Package Sparrow.Chart.WP8**
-  **PM>Install-Package Sparrow.BulletGraph.WP8**
+  PM>Install-Package Sparrow.Chart.WP8
+  PM>Install-Package Sparrow.BulletGraph.WP8
 ```
 5. Connect the device(phone) with the USB cable
 6. In the tools bar click on play "Device"
